@@ -6,13 +6,17 @@ function waitFor(element, eventName) {
       element.removeEventListener(eventName, myEvent);
 
       resolve(
-        `It was ${eventName} on the element: ${element.nodeName}, id: ${element.id}`
+        `It was ${eventName} on the element: ${element.nodeName}, id: ${element.id}.`,
       );
     };
 
     element.addEventListener(eventName, myEvent);
+
+    // console.log(myEvent());
   });
 }
+
+// console.log(waitFor());
 
 const printMessage = (message) => {
   const div = document.createElement('div');
@@ -37,4 +41,4 @@ waitFor(loginField, 'blur').then(printMessage);
 waitFor(passwordField, 'blur').then(printMessage);
 waitFor(button, 'blur').then(printMessage);
 
-// It was ${eventName} on the element: ${element.nodeName}, id: ${element.id}
+// It was ${eventName} on the element: ${element.nodeName}, id: ${element.id}.
